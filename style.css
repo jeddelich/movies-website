@@ -89,8 +89,65 @@ HEADER
 
 */
 
-header {
+.header__container {
     width: 100%;
     height: calc(100vh - 80px);
+    display: flex;
     background-color: #121212;
+}
+
+.header__row {
+    display: flex;
+}
+
+.movie__list {
+    display: flex;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw / 3);
+}
+
+.movies__poster--wrapper {
+    display: flex;
+    width: 80%;
+}
+
+.movie__poster {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: #8E8E8E 0 0 4px;
+    transition: all 300ms ease;
+}
+
+.movie__poster:hover {
+    transform: scale(1.05);
+}
+
+.movie__description {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.movie__title,
+.movie__year,
+.movie__rated {
+    color: #F4F4F2;
+    margin: 4px 0;
+}
+
+.movie__details {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.movie__year,
+.movie__rated {
+    font-size: 12px;
 }

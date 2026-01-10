@@ -6,15 +6,14 @@
     <title>Movies</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/b6ac0a8ac4.js" crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
 </head>
 <body>
     <section id="landing-page">
         <nav>
-            <form action="" class="search-bar__form">
+            <form id="search-bar__form">
                 <div class="search-bar--scale-wrapper">
-                    <input type="text" class="search-bar" placeholder="Search movies here...">
-                    <button class="search-bar__form--btn">Search</button>
+                    <input type="text" id="search-bar" name="s" placeholder="Search movies here...">
+                    <button type="submit" class="search-bar__form--btn">Search</button>
                 </div>
             </form>
             <div class="nav__side--left">
@@ -81,5 +80,6 @@
             </div>
         </header>
     </section>
+    <script src="./index.js"></script>
 </body>
 </html>

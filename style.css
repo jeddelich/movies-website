@@ -25,7 +25,7 @@ nav {
   border-bottom: 2px inset #8E8E8E;
 }
 
-#search-bar__form {
+#search__form {
     position: absolute;
     width: 24vw;
     left: 34%;

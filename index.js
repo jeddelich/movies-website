@@ -2,6 +2,8 @@
 
 const searchForm = document.getElementById("search__form");
 
+// main function that is run
+
 searchForm.addEventListener('submit', function(event) {
     
     // my important const and let variables
@@ -15,9 +17,38 @@ searchForm.addEventListener('submit', function(event) {
     renderMovies(search)
 });
 
+/* 
+
+functions used within main 
+
+*/ 
+
 async function renderMovies(search) {
     const moviesPromise = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=806b3177`);
     const moviesData = await moviesPromise.json()
     const firstSix = moviesData.Search.splice(0, 6)
     console.log(firstSix)
+    moviesHTML(firstSix);
 };
+
+function moviesHTML(firstSix) {
+    const movieList = document.querySelector(".movie__list");
+    movieList.innerHTML = null
+    for (i = 0; i < firstSix.length; i++) {
+    movieList.innerHTML += 
+    `<div class="movie">
+        <div class="movie__poster--wrapper">
+            <img src="${firstSix[i].Poster}" class="movie__poster">
+        </div>
+        <div class="movie__description">
+            <div class="movie__title">${firstSix[i].Title}</div>
+            <div class="movie__details">
+                <div class="movie__year">${firstSix[i].Year}</div>
+                <div class="movie__rated">PG-13</div>
+            </div>
+        </div>
+    </div>`
+    }
+    const container = document.querySelector(".header__container");
+    container.style.height = "fit-content";
+}

@@ -132,6 +132,7 @@ HEADER
 
 .movie__list {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .movie {
@@ -139,12 +140,13 @@ HEADER
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: calc(100vw / 3);
+    width: calc(100% / 3);
+    margin: 48px 0;
 }
 
-.movies__poster--wrapper {
+.movie__poster--wrapper {
     display: flex;
-    width: 80%;
+    width: 50%;
 }
 
 .movie__poster {
@@ -162,6 +164,7 @@ HEADER
     display: flex;
     flex-direction: column;
     width: fit-content;
+    margin-top: 16px;
 }
 
 .movie__title,
@@ -171,13 +174,21 @@ HEADER
     margin: 4px 0;
 }
 
+.movie__title {
+    text-align: center;
+}
+
 .movie__details {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .movie__year,
 .movie__rated {
     font-size: 12px;
+}
+
+.movie__year {
+    margin-right: 16px;
 }

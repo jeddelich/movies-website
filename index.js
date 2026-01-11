@@ -35,20 +35,39 @@ function moviesHTML(firstSix) {
     const movieList = document.querySelector(".movie__list");
     movieList.innerHTML = null
     for (i = 0; i < firstSix.length; i++) {
-    movieList.innerHTML += 
-    `<div class="movie">
-        <div class="movie__poster--wrapper">
-            <img src="${firstSix[i].Poster}" class="movie__poster">
-        </div>
-        <div class="movie__description">
-            <div class="movie__title">${firstSix[i].Title}</div>
-            <div class="movie__details">
-                <div class="movie__year">${firstSix[i].Year}</div>
-                <div class="movie__rated">PG-13</div>
-            </div>
-        </div>
-    </div>`
+        
+        if (firstSix[i].Poster === "N/A") {
+            movieList.innerHTML += 
+            `<div class="movie">
+                <div class="movie__poster--wrapper">
+                    <div class="movie__poster--unavailable">No Picture<br>In Database</div>
+                </div>
+                <div class="movie__description">
+                    <div class="movie__title">${firstSix[i].Title}</div>
+                    <div class="movie__details">
+                        <div class="movie__year">${firstSix[i].Year}</div>
+                        <div class="movie__rated">PG-13</div>
+                    </div>
+                </div>
+            </div>`    
+        }
+        else {
+            movieList.innerHTML += 
+            `<div class="movie">
+                <div class="movie__poster--wrapper">
+                    <img src="${firstSix[i].Poster}" class="movie__poster">
+                </div>
+                <div class="movie__description">
+                    <div class="movie__title">${firstSix[i].Title}</div>
+                    <div class="movie__details">
+                        <div class="movie__year">${firstSix[i].Year}</div>
+                        <div class="movie__rated">PG-13</div>
+                    </div>
+                </div>
+            </div>`
+        }
     }
+    
     const container = document.querySelector(".header__container");
     container.style.height = "fit-content";
 }

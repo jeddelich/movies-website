@@ -1,12 +1,14 @@
 // API key: 806b3177
 
 const searchForm = document.getElementById("search__form");
+const spinner = document.querySelector(".fa-spinner");
+const container = document.querySelector(".header__container");
+const movieList = document.querySelector(".movie__list");
+
 
 // main function that is run
 
 searchForm.addEventListener('submit', function(event) {
-    
-    // add class which will enable loading css
 
     // my important const and let variables
     const searchBar = document.getElementById("search-bar");
@@ -15,10 +17,7 @@ searchForm.addEventListener('submit', function(event) {
     // no website refresh on submit 
     event.preventDefault();
 
-    // fetches movies by search
-    setTimeout(() => {
         renderMovies(search)
-    }, 1000)
 });
 
 /* 
@@ -28,17 +27,27 @@ functions used within main
 */ 
 
 async function renderMovies(search) {
+    // loading state initiated
+    spinner.classList += " loading"  
+    container.classList += " move-forward"
+    movieList.style.opacity = 0;
+    
     const moviesPromise = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=806b3177`);
     const moviesData = await moviesPromise.json()
-    const firstSix = moviesData.Search.splice(0, 6)
+    const firstSix = moviesData.Search.splice(0, 6)  
     console.log(firstSix)
-    moviesHTML(firstSix);
 
-    // remove class that will disable loading css
+    setTimeout(() => {
+    moviesHTML(firstSix);
+    }, 1000)
 };
 
 function moviesHTML(firstSix) {
-    const movieList = document.querySelector(".movie__list");
+   
+    spinner.classList.remove ("loading") 
+    container.classList.remove ("move-forward") 
+    movieList.style.opacity = 1;  
+
     movieList.innerHTML = null
     if (firstSix[5].Poster.status === 404) {
         console.log("testing")
@@ -81,6 +90,5 @@ function moviesHTML(firstSix) {
         }
     }
     
-    const container = document.querySelector(".header__container");
     container.style.height = "fit-content";
 }

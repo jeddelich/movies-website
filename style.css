@@ -8,11 +8,38 @@
   font-family: "Inter", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* 
 
 LANDING PAGE 
 
 */
+
+.fa-spinner {
+    position: absolute;
+    color: #F4F4F2;
+    font-size: 48px;
+    left: 45%;
+    top: 50%;
+    animation: spin 800ms linear infinite;
+    z-index: -1;
+}
+
+.loading {
+    z-index: 1001;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 nav {
   width: 100%;
@@ -148,6 +175,22 @@ HEADER
     height: calc(100vh - 80px);
     display: flex;
     background-color: #121212;
+    position: relative;
+}
+
+.header__container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #121212;
+    z-index: -1;
+}
+
+.move-forward {
+    z-index: 0;
 }
 
 .header__row {
@@ -157,6 +200,7 @@ HEADER
 .movie__list {
     display: flex;
     flex-wrap: wrap;
+    opacity: 1;
 }
 
 .movie {

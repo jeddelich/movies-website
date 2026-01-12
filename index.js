@@ -6,6 +6,8 @@ const searchForm = document.getElementById("search__form");
 
 searchForm.addEventListener('submit', function(event) {
     
+    // add class which will enable loading css
+
     // my important const and let variables
     const searchBar = document.getElementById("search-bar");
     let search = searchBar.value;
@@ -14,7 +16,9 @@ searchForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     // fetches movies by search
-    renderMovies(search)
+    setTimeout(() => {
+        renderMovies(search)
+    }, 1000)
 });
 
 /* 
@@ -29,13 +33,22 @@ async function renderMovies(search) {
     const firstSix = moviesData.Search.splice(0, 6)
     console.log(firstSix)
     moviesHTML(firstSix);
+
+    // remove class that will disable loading css
 };
 
 function moviesHTML(firstSix) {
     const movieList = document.querySelector(".movie__list");
     movieList.innerHTML = null
-    for (i = 0; i < firstSix.length; i++) {
+    if (firstSix[5].Poster.status === 404) {
+        console.log("testing")
+    }
+    else {
+        console.log("failed")
+    }
         
+    for (i = 0; i < firstSix.length; i++) {
+
         if (firstSix[i].Poster === "N/A") {
             movieList.innerHTML += 
             `<div class="movie">

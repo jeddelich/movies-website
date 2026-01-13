@@ -4,7 +4,13 @@ const searchForm = document.getElementById("search__form");
 const spinner = document.querySelector(".fa-spinner");
 const container = document.querySelector(".header__container");
 const movieList = document.querySelector(".movie__list");
+const header = document.querySelector(".welcome")
+const background = document.querySelector(".background__img");
+const navLinks = document.querySelectorAll(".nav__link--1");
+console.log(navLinks);
+const navLinkHome = document.querySelector(".nav__link--2");
 let movieArray = [];
+let releaseDates = [];
 
 // main function that is run
 
@@ -30,6 +36,11 @@ async function renderMovies(search) {
   spinner.classList += " loading";
   container.classList += " move-forward";
   movieList.style.opacity = 0;
+  header.style.visibility = "hidden";
+  searchForm.style.top = "-64px";
+  background.style.opacity = 0;
+  navLinks[0].style.display = "none";
+  navLinks[1].style.display = "none";
 
   const moviesPromise = await fetch(
     `http://www.omdbapi.com/?s=${search}&apikey=806b3177`
@@ -39,7 +50,10 @@ async function renderMovies(search) {
 
   movieArray = [];
 
+console.log(firstSix)
+
   calculateRuntimes(firstSix);
+  reformatReleaseDates(firstSix);
 
   setTimeout(() => {
     moviesHTML(firstSix, movieArray);
@@ -82,7 +96,7 @@ function moviesHTML(firstSix, movieArray) {
             </div>`;
     }
   }
-
+  navLinkHome.style.display = "flex";
   container.style.height = "fit-content";
 }
 
@@ -96,9 +110,9 @@ async function calculateRuntimes(firstSix) {
     );
     const movieData2 = await moviesPromise2.json();
     const movieDataNumbers = movieData2.Runtime.replace(" min", "");
-    
+
     // formats to hours and minutes
-    
+
     if (Number(movieDataNumbers) > 119) {
       const hours = Math.floor(movieDataNumbers / 60);
       const minutes = movieDataNumbers % 60;
@@ -109,9 +123,19 @@ async function calculateRuntimes(firstSix) {
       const minutes = movieDataNumbers % 60;
       const time = hours + " hr " + minutes + " mins";
       movieArray.push(time);
+    } else if (movieDataNumbers === "N/A") {
+      movieArray.push("tv series");
     } else {
       const time2 = movieDataNumbers + " mins";
       movieArray.push(time2);
     }
   }
+}
+
+function reformatReleaseDates(firstSix) {
+    for (let i = 0; i < firstSix.length; i++) {
+        if (firstSix[i].Year[firstSix[i].Year.length - 1] === "–") {
+            firstSix[i].Year = firstSix[i].Year + "current"
+        }
+    }
 }

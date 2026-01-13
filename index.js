@@ -7,7 +7,6 @@ const movieList = document.querySelector(".movie__list");
 const header = document.querySelector(".welcome")
 const background = document.querySelector(".background__img");
 const navLinks = document.querySelectorAll(".nav__link--1");
-console.log(navLinks);
 const navLinkHome = document.querySelector(".nav__link--2");
 let movieArray = [];
 let releaseDates = [];
@@ -38,7 +37,7 @@ async function renderMovies(search) {
   movieList.style.opacity = 0;
   header.style.visibility = "hidden";
   searchForm.style.top = "-64px";
-  background.style.opacity = 0;
+  background.style.display = "none";
   navLinks[0].style.display = "none";
   navLinks[1].style.display = "none";
 
@@ -49,8 +48,6 @@ async function renderMovies(search) {
   const firstSix = moviesData.Search.splice(0, 6);
 
   movieArray = [];
-
-console.log(firstSix)
 
   calculateRuntimes(firstSix);
   reformatReleaseDates(firstSix);
@@ -71,10 +68,12 @@ function moviesHTML(firstSix, movieArray) {
     if (firstSix[i].Poster === "N/A") {
       movieList.innerHTML += `<div class="movie">
                 <div class="movie__poster--wrapper">
-                    <div class="movie__poster--unavailable">No Picture<br>In Database</div>
+                    <div class="movie__poster--unavailable">No Picture<br>In Database
+                        <i class="fa-solid fa-face-sad-cry"></i>
+                    </div>
                 </div>
                 <div class="movie__description">
-                    <div class="movie__title">${firstSix[i].Title}</div>
+                    <div class="movie__title movie__title--${i}">${firstSix[i].Title}</div>
                     <div class="movie__details">
                         <div class="movie__year">${firstSix[i].Year}</div>
                         <div class="movie__rated">${movieArray[i]}</div>
@@ -87,7 +86,7 @@ function moviesHTML(firstSix, movieArray) {
                     <img src="${firstSix[i].Poster}" class="movie__poster">
                 </div>
                 <div class="movie__description">
-                    <div class="movie__title">${firstSix[i].Title}</div>
+                    <div class="movie__title movie__title--${i}">${firstSix[i].Title}</div>
                     <div class="movie__details">
                         <div class="movie__year">${firstSix[i].Year}</div>
                         <div class="movie__rated">${movieArray[i]}</div>
@@ -96,6 +95,7 @@ function moviesHTML(firstSix, movieArray) {
             </div>`;
     }
   }
+  titleWrap(firstSix);
   navLinkHome.style.display = "flex";
   container.style.height = "fit-content";
 }
@@ -136,6 +136,26 @@ function reformatReleaseDates(firstSix) {
     for (let i = 0; i < firstSix.length; i++) {
         if (firstSix[i].Year[firstSix[i].Year.length - 1] === "–") {
             firstSix[i].Year = firstSix[i].Year + "current"
+        }
+    }
+}
+
+function titleWrap(firstSix) {
+    for (let i = 0; i < firstSix.length; i++) {
+        if (firstSix[i].Title.length >= 50) {
+            currentTitleClass = document.querySelector(`.movie__title--${i}`)
+            console.log(currentTitleClass);
+            currentTitleClass.style.maxWidth = "275px";
+        }
+        else if (firstSix[i].Title.length >= 42) {
+            currentTitleClass = document.querySelector(`.movie__title--${i}`)
+            console.log(currentTitleClass);
+            currentTitleClass.style.maxWidth = "225px";
+        }
+        else if (firstSix[i].Title.length >= 35) {
+            currentTitleClass = document.querySelector(`.movie__title--${i}`)
+            console.log(currentTitleClass);
+            currentTitleClass.style.maxWidth = "200px";
         }
     }
 }

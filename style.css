@@ -270,6 +270,8 @@ HEADER
 }
 
 .movie__poster--unavailable {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     border-radius: 4px;
     box-shadow: #8E8E8E 0 0 4px;
@@ -279,6 +281,14 @@ HEADER
     font-size: 2cqw;
     padding: 50% 16px;
     white-space: nowrap;
+    align-items: center;
+}
+
+.fa-face-sad-cry {
+    margin-top: 16px;
+    font-size: 36px;
+    color: #F4F4F2;
+    
 }
 
 .movie__poster--unavailable:hover {

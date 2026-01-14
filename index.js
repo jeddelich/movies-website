@@ -4,14 +4,14 @@ const searchForm = document.getElementById("search__form");
 const spinner = document.querySelector(".fa-spinner");
 const container = document.querySelector(".header__container");
 const movieList = document.querySelector(".movie__list");
-const header = document.querySelector(".welcome")
+const header = document.querySelector(".welcome");
 const background = document.querySelector(".background__img");
 const navLinks = document.querySelectorAll(".nav__link--1");
 const navLinkHome = document.querySelector(".nav__link--2");
 let movieArray = [];
 let releaseDates = [];
 
-// main function that is run
+
 
 searchForm.addEventListener("submit", function (event) {
   // my important const and let variables
@@ -100,7 +100,7 @@ function moviesHTML(firstSix, movieArray) {
   container.style.height = "fit-content";
 }
 
-// fetches the length of the movies using the i= given by the fetched s= 
+// fetches the length of the movies using the i= given by the fetched s=
 
 async function calculateRuntimes(firstSix) {
   for (let i = 0; i < firstSix.length; i++) {
@@ -133,29 +133,27 @@ async function calculateRuntimes(firstSix) {
 }
 
 function reformatReleaseDates(firstSix) {
-    for (let i = 0; i < firstSix.length; i++) {
-        if (firstSix[i].Year[firstSix[i].Year.length - 1] === "–") {
-            firstSix[i].Year = firstSix[i].Year + "current"
-        }
+  for (let i = 0; i < firstSix.length; i++) {
+    if (firstSix[i].Year[firstSix[i].Year.length - 1] === "–") {
+      firstSix[i].Year = firstSix[i].Year + "current";
     }
+  }
 }
 
 function titleWrap(firstSix) {
-    for (let i = 0; i < firstSix.length; i++) {
-        if (firstSix[i].Title.length >= 50) {
-            currentTitleClass = document.querySelector(`.movie__title--${i}`)
-            console.log(currentTitleClass);
-            currentTitleClass.style.maxWidth = "275px";
-        }
-        else if (firstSix[i].Title.length >= 42) {
-            currentTitleClass = document.querySelector(`.movie__title--${i}`)
-            console.log(currentTitleClass);
-            currentTitleClass.style.maxWidth = "225px";
-        }
-        else if (firstSix[i].Title.length >= 35) {
-            currentTitleClass = document.querySelector(`.movie__title--${i}`)
-            console.log(currentTitleClass);
-            currentTitleClass.style.maxWidth = "200px";
-        }
+  for (let i = 0; i < firstSix.length; i++) {
+    if (firstSix[i].Title.length >= 50) {
+      currentTitleClass = document.querySelector(`.movie__title--${i}`);
+      console.log(currentTitleClass);
+      currentTitleClass.style.maxWidth = "275px";
+    } else if (firstSix[i].Title.length >= 42) {
+      currentTitleClass = document.querySelector(`.movie__title--${i}`);
+      console.log(currentTitleClass);
+      currentTitleClass.style.maxWidth = "225px";
+    } else if (firstSix[i].Title.length >= 35) {
+      currentTitleClass = document.querySelector(`.movie__title--${i}`);
+      console.log(currentTitleClass);
+      currentTitleClass.style.maxWidth = "200px";
     }
+  }
 }

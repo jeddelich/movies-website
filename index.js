@@ -42,7 +42,7 @@ async function renderMovies(search) {
   navLinks[1].style.display = "none";
 
   const moviesPromise = await fetch(
-    `http://www.omdbapi.com/?s=${search}&apikey=806b3177`
+    `https://www.omdbapi.com/?s=${search}&apikey=806b3177`
   );
   const moviesData = await moviesPromise.json();
   const firstSix = moviesData.Search.splice(0, 6);
@@ -106,7 +106,7 @@ async function calculateRuntimes(firstSix) {
   for (let i = 0; i < firstSix.length; i++) {
     const movieId = firstSix[i].imdbID;
     const moviesPromise2 = await fetch(
-      `http://www.omdbapi.com/?i=${movieId}&apikey=806b3177`
+      `https://www.omdbapi.com/?i=${movieId}&apikey=806b3177`
     );
     const movieData2 = await moviesPromise2.json();
     const movieDataNumbers = movieData2.Runtime.replace(" min", "");

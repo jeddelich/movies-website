@@ -8,10 +8,9 @@ const header = document.querySelector(".welcome");
 const background = document.querySelector(".background__img");
 const navLinks = document.querySelectorAll(".nav__link--1");
 const navLinkHome = document.querySelector(".nav__link--2");
+const width = document.body.scrollWidth + 15
 let movieArray = [];
 let releaseDates = [];
-
-
 
 searchForm.addEventListener("submit", function (event) {
   // my important const and let variables
@@ -36,7 +35,7 @@ async function renderMovies(search) {
   container.classList += " move-forward";
   movieList.style.opacity = 0;
   header.style.visibility = "hidden";
-  searchForm.style.top = "-64px";
+  scrollBarFloatUp();
   background.style.display = "none";
   navLinks[0].style.display = "none";
   navLinks[1].style.display = "none";
@@ -155,5 +154,14 @@ function titleWrap(firstSix) {
       console.log(currentTitleClass);
       currentTitleClass.style.maxWidth = "200px";
     }
+  }
+}
+
+function scrollBarFloatUp () {
+  if (width < 768) {
+    searchForm.style.top = "-58px";
+  }
+  else {
+    searchForm.style.top = "-64px";    
   }
 }

@@ -25,11 +25,11 @@
         <div class="nav__side--right">
           <ul class="nav__links">
             <li class="nav__link nav__link--2">
-              <a class="nav__link--anchor" onclick="window.location.reload();"
-                >Go Back To Home</a
+              <a class="nav__link--anchor nav__link--anchor2" onclick="window.location.reload();"
+                >Go Home</a
               >
               <div class="underline"></div>
-              <i class="fa-solid fa-arrow-right-to-bracket"></i>
+              <i class="fa-solid fa-arrow-right-to-bracket" onclick="window.location.reload();"></i>
             </li>
             <li class="nav__link nav__link--1">
               <a class="nav__link--anchor">About</a>
@@ -42,37 +42,47 @@
           </ul>
         </div>
       </nav>
-      <header>
-        <div class="header__container">
-          <img
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGZpbG0lMjByZWVsfGVufDB8fDB8fHww"
-            class="background__img"
-            alt=""
-          />
-          <i class=""></i>
-          <h1 class="welcome">
-            Welcome! Feel free to browse all the movies we have in our
-            collection!
-          </h1>
-          <form id="search__form">
-            <div class="search-bar--scale-wrapper">
-              <input
-                type="text"
-                id="search-bar"
-                autocomplete="off"
-                placeholder="Search movies here..."
-              />
-              <button type="submit" class="search-bar__form--btn">
-                Search
-              </button>
+      <main>  
+        <header>
+          <div class="header__container">
+            <img
+              src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGZpbG0lMjByZWVsfGVufDB8fDB8fHww"
+              class="background__img"
+              alt=""
+            />
+            <i class=""></i>
+            <h1 class="welcome">
+              Welcome! Feel free to browse all the movies we have in our
+              collection!
+            </h1>
+            <form id="search__form">
+              <div class="search-bar--scale-wrapper">
+                <input
+                  type="text"
+                  id="search-bar"
+                  autocomplete="off"
+                  placeholder="Search movies..."
+                />
+                <button type="submit" class="search-bar__form--btn">
+                  Search
+                </button>
+              </div>
+            </form>
+            <div class="header__row">
+              <div class="movie__list"></div>
             </div>
-          </form>
-          <div class="header__row">
-            <div class="movie__list"></div>
           </div>
-        </div>
-      </header>
+        </header>
+      </main>
     </section>
+    <footer>
+        <figure class="footer__logo--wrapper">
+          <img src="./assets/Footer__logo.png" alt="" class="footer__logo--img">
+        </figure>
+        <div class="footer__copyright">
+          Copyright &copy; 2026 Jed Delich
+        </div>
+    </footer>
     <script src="./index.js"></script>
   </body>
 </html>

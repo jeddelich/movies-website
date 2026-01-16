@@ -104,6 +104,17 @@ function moviesHTML(firstSix, movieArray) {
             </div>`;
     }
   }
+
+  document.querySelectorAll('img').forEach(image => {
+    image.addEventListener('error', () => {
+        console.log(`Failed to load image: ${image.src}`);
+        imgWrapper = image.parentElement;
+        imgWrapper.innerHTML = `<div class="movie__poster--unavailable">No Picture<br>In Database
+                        <i class="fa-solid fa-face-sad-cry"></i>
+                    </div>`;
+    });
+  });
+
   titleWrap(firstSix);
   navLinkHome.style.display = "flex";
   container.style.height = "fit-content";

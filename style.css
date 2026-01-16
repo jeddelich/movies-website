@@ -292,7 +292,7 @@ HEADER
   color: #f4f4f2;
   font-weight: 200;
   font-size: 2cqw;
-  padding: 50% 16px;
+  padding: 45% 16px;
   white-space: nowrap;
   align-items: center;
 }
@@ -301,10 +301,6 @@ HEADER
   margin-top: 16px;
   font-size: 36px;
   color: #f4f4f2;
-}
-
-.movie__poster--unavailable:hover {
-  box-shadow: #8b1e1e 0 0 4px;
 }
 
 .movie__description {

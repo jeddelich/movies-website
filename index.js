@@ -8,6 +8,7 @@ const header = document.querySelector(".welcome");
 const background = document.querySelector(".background__img");
 const navLinks = document.querySelectorAll(".nav__link--1");
 const navLinkHome = document.querySelector(".nav__link--2");
+const specify = document.querySelector(".specify")
 const width = document.body.scrollWidth + 15
 let movieArray = [];
 let releaseDates = [];
@@ -21,6 +22,7 @@ searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   renderMovies(search);
+
 });
 
 /* 
@@ -39,21 +41,29 @@ async function renderMovies(search) {
   background.style.display = "none";
   navLinks[0].style.display = "none";
   navLinks[1].style.display = "none";
+  specify.innerHTML = ``
 
-  const moviesPromise = await fetch(
-    `https://www.omdbapi.com/?s=${search}&apikey=806b3177`
-  );
-  const moviesData = await moviesPromise.json();
-  const firstSix = moviesData.Search.splice(0, 6);
+  try {
+    const moviesPromise = await fetch(
+      `https://www.omdbapi.com/?s=${search}&apikey=806b3177`
+    );
+    const moviesData = await moviesPromise.json();
+    const firstSix = moviesData.Search.splice(0, 6);
 
-  movieArray = [];
+    movieArray = [];
 
-  calculateRuntimes(firstSix);
-  reformatReleaseDates(firstSix);
+    calculateRuntimes(firstSix);
+    reformatReleaseDates(firstSix);
 
-  setTimeout(() => {
-    moviesHTML(firstSix, movieArray);
-  }, 1000);
+    setTimeout(() => {
+      moviesHTML(firstSix, movieArray);
+    }, 1000);
+  }
+  catch {
+    spinner.classList.remove("loading");
+    specify.innerHTML = `The movie you're searching for can't be found. 
+    Please specify and try again! For continued support contact us.`
+  }
 }
 
 function moviesHTML(firstSix, movieArray) {

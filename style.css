@@ -32,6 +32,18 @@ LANDING PAGE
   z-index: 1001;
 }
 
+.specify {
+  color: #f4f4f2;
+  z-index: 100;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  max-width: 500px;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0);
@@ -404,6 +416,11 @@ footer {
   #search__form {
     top: 8%;
   }
+
+.specify {
+  max-width: 325px;
+}
+
 }
 
 @media (max-width: 768px) {
@@ -422,6 +439,13 @@ footer {
     right: 4px;
     font-size: 12px;
     font-weight: 500;
+  }
+
+  .specify {
+    max-width: 255px;
+    font-size: 16px;
+    text-align: center;
+    left: 48%;
   }
 
   .welcome {
@@ -505,6 +529,11 @@ footer {
 
   .movies__icon {
     font-size: 20px;
+  }
+
+  .specify {
+    max-width: 150px;
+    font-size: 14px;
   }
 
   h1 {

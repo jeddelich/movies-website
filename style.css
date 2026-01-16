@@ -233,6 +233,7 @@ HEADER
   display: flex;
   background-color: #121212;
   position: relative;
+  justify-content: center;
 }
 
 .header__container::after {
